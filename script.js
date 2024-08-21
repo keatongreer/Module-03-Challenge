@@ -24,7 +24,7 @@ const collectEmployees = function () {
     }    
 
     // add new employee object to employees array
-    addedEmployees.push(newEmployee);    
+    addedEmployees.push(newEmployee);
 
     // ask user if they want to add another employee; terminate loop if not
     if (!confirm(`Do you want to add another employee?`)) {
@@ -45,19 +45,27 @@ const displayAverageSalary = function (employeesArray) {
   // get the total salary of all employees
   let totalSalary = 0;
   for (let i = 0; i < employeesArray.length; i++) {
-    totalSalary += employeesArray[i]['salary'];
+    totalSalary += Number(employeesArray[i].salary);
   }
 
   // calculate and return average salary
-  return (totalSalary / employeesArray.length);
+  let avgSalary = (totalSalary / employeesArray.length);
+  // if (Number.isInteger(avgSalary)) {
+  //   console.log(`The average employee salary between our ${employeesArray.length} employee(s) is ${avgSalary}`);
+  // } else {
+  //   console.log(`The average employee salary between our ${employeesArray.length} employee(s) is ${}`);    
+  // }
+  console.log(avgSalary);
+  
+  console.log(`The average employee salary between our ${employeesArray.length} employee(s) is ${avgSalary.toFixed(2)}`);
 };
 
 // Select a random employee
 const getRandomEmployee = function (employeesArray) {
   // TODO: Select and display a random employee
-  let randomIndex = Math.floor(Math.random() * employeesArray);
+  let randomIndex = Math.floor(Math.random() * employeesArray.length);
   let selectedEmployee = employeesArray[randomIndex];
-  console.log(`Congratulations to ${selectedEmployee[firstName]} ${selectedEmployee[lastName]}, our random drawing winner!`);
+  console.log(`Congratulations to ${selectedEmployee.firstName} ${selectedEmployee.lastName}, our random drawing winner!`);
 };
 
 /*
